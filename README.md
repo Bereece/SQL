@@ -1,2 +1,2 @@
 # SQL
-SQL challenges
+SQL notes and codes
