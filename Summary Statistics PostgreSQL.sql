@@ -32,7 +32,7 @@ from products
 GROUP by products.category_id
 
 --ROLLUP- extension for GROUP BY
--- Subtotals anfd grand totals
+-- Subtotals and grand totals
 
 SELECT products.category_id, products.product_name,
 COUNT(*) as Num_Products,
