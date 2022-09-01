@@ -1,4 +1,4 @@
-https://www.sql-practice.com/
+ -- Source : https://www.sql-practice.com/
 
 -- Q.1 Show first name, last name, and gender of patients who's gender is 'M'
 
