@@ -1,16 +1,20 @@
 --SQL JOINS
-cREATE TABLE playlist (
+
+  CREATE TABLE playlist (
   artist VARCHAR,
   song VARCHAR);
+  
   CREATE TABLE toplist (
   tophit VARCHAR,
   play INT);
+  
   INSERT INTO playlist (artist,song) VALUES
   ('ABBA','Dancing Queen'),
   ('ABBA','Gimme!'),
   ('ABBA','The Winner Takes It All'),
   ('ABBA','Mamma Mia'),
   ('ABBA','Take a Chance On Me'),
+  
   INSERT INTO toplist (tophit,play) VALUES
   ('Dancing Queen',95145796),
   ('Gimme!',32785696),
@@ -50,7 +54,8 @@ cREATE TABLE playlist (
   JOIN toplist
   ON song = tophit;
   
-  --Dot notation with one column removedtrading.prices
+  --Dot notation with one column
+  
   SELECT
   toplist.tophit,
   toplist.play,
@@ -69,6 +74,7 @@ FULL JOIN playlist
 ON toplist.tophit = playlist.song;
 
 -- FULL JOIN — but keeping the missing values only from one of the SQL tables
+
 --LEFT JOIN
 SELECT
   toplist.tophit,
@@ -77,6 +83,7 @@ SELECT
 FROM toplist
 LEFT JOIN playlist
 ON playlist.song= toplist.tophit;
+
 -- Keeps every line from the toplist table (that’s the LEFT table) even if it
 --doesn’t exist in the playlist table (which is the RIGHT table)
 
