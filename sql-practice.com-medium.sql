@@ -142,6 +142,51 @@ HAVING
 ORDER BY total_diagnosis DESC
 
 
+-- Q.12 Show all patient's first_name, last_name, and birth_date who were born in the 1970s decade. Sort the list starting from the earliest birth_date.
+
+SELECT first_name,last_name,birth_date
+FROM patients
+WHERE YEAR(birth_date) BETWEEN 1970 AND 1979
+ORDER BY birth_date;
+
+-- Alternative solutions
+
+SELECT
+  first_name,
+  last_name,
+  birth_date
+FROM patients
+WHERE
+  birth_date >= '1970-01-01'
+  AND birth_date < '1980-01-01'
+ORDER BY birth_date ASC
+
+
+SELECT
+  first_name,
+  last_name,
+  birth_date
+FROM patients
+WHERE year(birth_date) LIKE '197%'
+ORDER BY birth_date ASC
+
+
+-- Q.13 We want to display each patient's full name in a single column. Their last_name in all upper letters must appear first, then first_name in all lower case letters. Separate the last_name and first_name with a comma. Order the list by the first_name in decending order
+EX: SMITH,jane
+
+SELECT CONCAT(UPPER(last_name),',',LOWER(first_name)) full_names
+FROM patients
+ORDER BY first_name desc;
+
+--Alternate solutions
+
+SELECT
+  UPPER(last_name) || ',' || LOWER(first_name) AS new_name_format
+FROM patients
+ORDER BY first_name DESC;
+
+
+
 
 
 
