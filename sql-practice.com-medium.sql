@@ -99,6 +99,52 @@ SELECT first_name,last_name,'physician' AS role
 FROM physicians;
 
 
+-- Q.11 Show all allergies ordered by popularity. Remove 'NKA' and NULL values from query. 
+
+
+SELECT allergies,count(allergies) total_allergies
+FROM patients
+WHERE allergies IS NOT NULL
+AND allergies is NOT 'NKA'
+GROUP BY allergies
+order by total_allergies desc;
+
+-- Alternative solutions
+
+SELECT
+  allergies,
+  count(*)
+FROM patients
+WHERE allergies NOT IN ('NKA', 'NULL')
+GROUP BY allergies
+ORDER BY count(*) DESC;
+
+
+SELECT
+  allergies,
+  COUNT(*) AS total_diagnosis
+FROM patients
+WHERE
+  NOT allergies = 'NKA'
+  AND allergies NOT NULL
+GROUP BY allergies
+ORDER BY total_diagnosis DESC
+
+
+SELECT
+  allergies,
+  count(allergies) AS total_diagnosis
+FROM patients
+GROUP BY allergies
+HAVING
+  allergies IS NOT NULL
+  AND allergies IS NOT 'NKA'
+ORDER BY total_diagnosis DESC
+
+
+
+
+
 
 
 
