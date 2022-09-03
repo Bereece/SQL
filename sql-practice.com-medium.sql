@@ -185,6 +185,44 @@ SELECT
 FROM patients
 ORDER BY first_name DESC;
 
+-- Q.14  Show the province_id(s), sum of height; where the total sum of its patient's height is greater than or equal to 7,000.
+
+SELECT province_id,SUM(height)
+FROM patients
+group by province_id
+HAVING sum(height) >= 7000;
+
+SELECT
+  province_id,
+  SUM(height) AS sum_height
+FROM patients
+GROUP BY province_id
+HAVING sum_height >= 7000
+
+-- Q.15  Show the difference between the largest weight and smallest weight for patients with the last name 'Maroni'
+
+SELECT (MAX(weight)-MIN(weight))AS weight_diff
+from patients
+where last_name = 'Maroni';
+
+-- Q.16 Show all of the days of the month (1-31) and how many admission_dates occurred on that day. Sort by the day with most admissions to least admissions.
+
+SELECT DAY(admission_date) day_ ,COUNT(DAY(admission_date)) admission_count
+from admissions
+group by day_
+ORDER BY admission_count  desc;
+
+--Alternate solution
+
+SELECT
+  DAY(admission_date) AS day_number,
+  COUNT(*) AS number_of_admissions
+FROM admissions
+GROUP BY day_number
+ORDER BY number_of_admissions DESC
+
+
+
 
 
 
