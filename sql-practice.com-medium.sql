@@ -76,6 +76,29 @@ WHERE allergies IN ('Penicillin','Morphine')
 ORDER BY allergies , first_name,last_name;
 
 
+--  Q.8 Show patient_id, primary_diagnosis from admissions. Find patients admitted multiple times for the same primary_diagnosis.
+
+SELECT patient_id,primary_diagnosis 
+FROM admissions
+GROUP BY patient_id,primary_diagnosis
+HAVING COUNT(primary_diagnosis) > 1;
+
+-- Q.9  Show the city and the total number of patients in the city in the order from most to least patients.
+
+SELECT city,COUNT(patient_id) total_patients
+FROM patients
+GROUP BY city
+ORDER BY total_patients DESC;
+
+-- Q.10  Show first name, last name and role of every person that is either patient or physician. The roles are either "Patient" or "Physician"
+
+SELECT first_name,last_name,'patient' AS role  
+FROM patients
+UNION 
+SELECT first_name,last_name,'physician' AS role 
+FROM physicians;
+
+
 
 
 
