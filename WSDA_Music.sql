@@ -1,5 +1,5 @@
-/*CREATED BY : Frida Achieng
-CREATE DATE :11/4/23
+/*CREATED BY : Frida A
+CREATE DATE :mm/dd/yy
 Description : SQL Essential Training
 Data: WSDA Music
 */
